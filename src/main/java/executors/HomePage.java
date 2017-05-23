@@ -14,6 +14,5 @@ public class HomePage {
         } else {
             $(By.xpath(String.format("//a[@href = '/task_%s']", taskNumber))).click();
         }
-
     }
 }

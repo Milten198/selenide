@@ -1,7 +1,7 @@
 package executors;
 
 import org.openqa.selenium.By;
-import util.FileHelper;
+import util.helpers.FileHelper;
 
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Condition.*;

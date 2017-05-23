@@ -1,4 +1,4 @@
-package util;
+package util.helpers;
 
 
 import org.apache.commons.io.FileUtils;
@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class FileHelper {
+
     public static void cleanDirectory(String path) {
         try {
             if (new File(path).exists())

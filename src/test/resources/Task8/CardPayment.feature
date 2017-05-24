@@ -5,7 +5,7 @@
     I want to be able to pay with different credit cards
 
     Background:
-      Given User is on page with task number "8"
+      Given I'm on page with task number "8"
 
     Scenario Outline: User is able to pay with any credit card
       When I select a credit card type "<card>"

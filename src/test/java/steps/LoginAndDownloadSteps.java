@@ -14,18 +14,12 @@ public class LoginAndDownloadSteps {
 
     private LoggedPage loggedPage;
     private LoginPage loginPage;
-    private HomePage homePage;
 
     public LoginAndDownloadSteps() {
         loggedPage = new LoggedPage();
         loginPage = new LoginPage();
-        homePage = new HomePage();
     }
 
-    @Given("^User is on page with task number \"([^\"]*)\"$")
-    public void userIsOnPageWithTaskNumber(String taskNumber) throws Throwable {
-        homePage.openTask(taskNumber);
-    }
 
     @When("^I fill the Login field with \"([^\"]*)\"$")
     public void iFillTheLoginFieldWith(String login) throws Throwable {

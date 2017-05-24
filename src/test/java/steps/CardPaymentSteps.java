@@ -17,7 +17,6 @@ public class CardPaymentSteps {
     @When("^I select a credit card type \"([^\"]*)\"$")
     public void iSelectACreditCardType(String cardType) throws Throwable {
         cardPaymentPage.selectCardType(cardType);
-
     }
 
     @And("^I type name \"([^\"]*)\"$")

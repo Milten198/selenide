@@ -1,0 +1,3 @@
+Jan, Kowalski, 800200300
+Maria, Nowak, 800100200
+Marek, Krawczyk, 800100400

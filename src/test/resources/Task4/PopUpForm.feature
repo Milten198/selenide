@@ -7,7 +7,7 @@ Feature: Popup with frm in separate window
   and save it
 
   Background:
-    Given User is on page with task number "4"
+    Given I'm on page with task number "4"
 
   Scenario: User is able to fill form and save
     When I click on Apply button

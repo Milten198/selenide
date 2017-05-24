@@ -5,7 +5,7 @@ Feature: Dynamically loaded content
   I want to be able to review dynamically loading content
 
   Background:
-    Given User is on page with task number "10"
+    Given I'm on page with task number "10"
 
   Scenario: User is able to scroll to the bottom
     When I scroll the page to the bottom

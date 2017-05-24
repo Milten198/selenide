@@ -6,7 +6,7 @@ Feature: Login and download file
   I want to be able to login and download file
 
   Background:
-    Given User is on page with task number "6"
+    Given I'm on page with task number "6"
 
   Scenario: User is able to logout
     When I fill the Login field with "tester"

@@ -5,7 +5,7 @@ Feature: Drag and drop product into the basket
   I want to be able to drag and drop product into the basket
 
   Background:
-    Given User is on page with task number "7"
+    Given I'm on page with task number "7"
 
   Scenario Outline: User is able to drag product and drop it into the basket
     When I set "<quantity>" of "<product>"

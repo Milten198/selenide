@@ -69,7 +69,6 @@ public class LoginAndDownloadSteps {
 
     @Then("^File is downloaded$")
     public void fileIsDownloaded() throws Throwable, Exception {
-        Thread.sleep(5000);
         Assert.assertTrue("File was not downloaded or wrong file downloaded", loggedPage.checkIfFileWasDownloaded());
     }
 }

@@ -3,8 +3,12 @@ package executors;
 import org.openqa.selenium.By;
 import util.helpers.FileHelper;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+import static util.configurations.TestConfiguration.DOWNLOAD_PATH;
+import static util.helpers.FileHelper.cleanDirectory;
+import static util.helpers.FileHelper.waitForFileToBeDownloaded;
 
 public class LoggedPage {
 
@@ -14,7 +18,6 @@ public class LoggedPage {
         fileHelper = new FileHelper();
     }
 
-    private static final String DOWNLOAD_PATH = "D:\\Selenide\\proj\\downloads";
     private static final String FILE_NAME = "pgs_cv.jpg";
 
     public void verifyLoggedPageIsVisible() {
@@ -30,10 +33,16 @@ public class LoggedPage {
     }
 
     public void cleanDownloadFolder() {
-        FileHelper.cleanDirectory(DOWNLOAD_PATH);
+        cleanDirectory(DOWNLOAD_PATH);
     }
 
     public boolean checkIfFileWasDownloaded() {
+        try {
+            waitForFileToBeDownloaded();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return fileHelper.isFileDownloaded(DOWNLOAD_PATH, FILE_NAME);
     }
+
 }

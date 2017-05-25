@@ -13,6 +13,9 @@ import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
 
 public class TestConfiguration {
 
+    public static final String DOWNLOAD_PATH = System.getProperty("user.dir")+ "\\downloads";
+    public final static int SHORT_TIME_FOR_THREAD = 1000;
+
     public static void chromeProperties() {
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "//chrome//chromedriver.exe");
         System.setProperty("selenide.browser", "Chrome");

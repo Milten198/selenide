@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class CardPaymentPage {
 
     public void selectCardType(String cardType) {
-
         $(By.cssSelector("#task8_form_cardType")).selectOption(cardType);
     }
 

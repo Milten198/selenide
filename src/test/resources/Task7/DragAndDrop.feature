@@ -1,4 +1,5 @@
 @Task7
+
 Feature: Drag and drop product into the basket
 
   As a user

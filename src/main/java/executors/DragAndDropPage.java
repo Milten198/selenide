@@ -1,9 +1,8 @@
 package executors;
 
 
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -25,11 +24,11 @@ public class DragAndDropPage {
     }
 
     public void dragProductLogo(String logoNumber) {
-        WebElement drag = getElement(logo(logoNumber));
+        SelenideElement drag = getElement(logo(logoNumber));
         dragAndDropElementWithoutWait(drag, getElement(By.cssSelector(".col-md-12.place-to-drop.ui-droppable")));
     }
 
-    private void dragAndDropElementWithoutWait(WebElement drag, WebElement drop) {
+    private void dragAndDropElementWithoutWait(SelenideElement drag, SelenideElement drop) {
         Actions actions = new Actions(getWebDriver());
         actions.dragAndDrop(drag, drop)
                 .build()

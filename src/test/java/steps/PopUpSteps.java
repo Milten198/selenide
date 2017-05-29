@@ -1,6 +1,5 @@
 package steps;
 
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -28,8 +27,8 @@ public class PopUpSteps {
 
     @And("^Form in window is open$")
     public void formInWindowIsOpen() throws Throwable {
-        formPage.switchToPopup();
-        formWindow.switchToFrame();
+        formPage.switchToPopup()
+                .switchToFrame();
         Assert.assertTrue("Frame is not focused", formWindow.isAlertDisplayedAndFocused());
     }
 

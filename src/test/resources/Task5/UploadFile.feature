@@ -1,6 +1,6 @@
 @Task5
 
-Feature: Upload file with correctly formatted data
+Feature: Upload file with formatted data
 
   As a user
   I want to be able to upload data and see them in table

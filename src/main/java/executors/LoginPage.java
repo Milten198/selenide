@@ -24,6 +24,6 @@ public class LoginPage {
     }
 
     public void verifyLoginErrorMessage(String message) {
-        $(By.cssSelector(".list-unstyled>li")).shouldBe(visible).shouldHave(text("Nieprawidłowe dane logowania"));
+        $(By.cssSelector(".list-unstyled>li")).shouldBe(visible).shouldHave(text(message));
     }
 }

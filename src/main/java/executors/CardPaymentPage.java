@@ -22,15 +22,17 @@ public class CardPaymentPage {
         $("#task8_form_cardCvv").val(cvvCode);
     }
 
-    public void setMonth(String month) {
+    public CardPaymentPage setMonth(String month) {
         $("#task8_form_cardInfo_month").selectOption(month);
+        return this;
     }
 
-    public void setYear(String year) {
+    public CardPaymentPage setYear(String year) {
         $("#task8_form_cardInfo_year").selectOption(year);
+        return this;
     }
 
-    public void clickPayButtn() {
+    public void clickPayButton() {
         $(".btn.btn-primary.col-md-4.pull-right").click();
     }
 

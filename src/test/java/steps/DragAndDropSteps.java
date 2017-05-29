@@ -14,8 +14,8 @@ public class DragAndDropSteps {
        dropPage = new DragAndDropPage();
     }
 
-    @When("^I set \"([^\"]*)\" of \"([^\"]*)\"$")
-    public void iSetOf(String productQuantity, String productNumber) throws Throwable {
+    @When("^I set quantity \"([^\"]*)\" of product \"([^\"]*)\"$")
+    public void iSetQuantityOfProduct(String productQuantity, String productNumber) throws Throwable {
         dropPage.setQuantity(productNumber, productQuantity);
     }
 

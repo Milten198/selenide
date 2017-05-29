@@ -1,22 +1,14 @@
 package executors;
 
 import org.openqa.selenium.By;
-import util.helpers.FileHelper;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static util.configurations.TestConfiguration.DOWNLOAD_PATH;
-import static util.helpers.FileHelper.cleanDirectory;
-import static util.helpers.FileHelper.waitForFileToBeDownloaded;
+import static util.helpers.FileHelper.*;
 
 public class LoggedPage {
-
-    private FileHelper fileHelper;
-
-    public LoggedPage() {
-        fileHelper = new FileHelper();
-    }
 
     private static final String FILE_NAME = "pgs_cv.jpg";
 
@@ -42,7 +34,7 @@ public class LoggedPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return fileHelper.isFileDownloaded(DOWNLOAD_PATH, FILE_NAME);
+        return isFileDownloaded(DOWNLOAD_PATH, FILE_NAME);
     }
 
 }

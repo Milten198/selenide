@@ -7,14 +7,14 @@ import org.junit.Assert;
 
 public class DynamicContentSteps {
 
-    DynamicContentPage contentPage;
+    private DynamicContentPage contentPage;
 
     public DynamicContentSteps() {
         contentPage = new DynamicContentPage();
     }
 
     @When("^I scroll the page to the bottom$")
-    public void iScrollThePageToTheBottom() throws Throwable, Exception {
+    public void iScrollThePageToTheBottom() throws Throwable {
         contentPage.scrollToTheFooter();
     }
 

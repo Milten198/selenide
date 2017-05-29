@@ -3,7 +3,7 @@
 Feature: Operations on nodes
 
   As a user
-  I want to be able to expand and change nodes names
+  I want to be able to expand nodes and change names
 
   Background:
     Given I'm on page with task number "9"

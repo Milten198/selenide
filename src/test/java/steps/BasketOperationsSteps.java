@@ -1,5 +1,6 @@
 package steps;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,8 +17,8 @@ public class BasketOperationsSteps {
 
     @When("^I add product \"([^\"]*)\" with quantity \"([^\"]*)\"$")
     public void iAddProductWithQuantity(String productName, String productQuantity) throws Throwable {
-        operationsPage.setQuantityOfProduct(productName, productQuantity);
-        operationsPage.addProductToBasket(productName);
+        operationsPage.setQuantityOfProduct(productName, productQuantity)
+                .addProductToBasket(productName);
     }
 
     @Then("^I can see total quantity of products in basket$")

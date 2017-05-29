@@ -19,20 +19,24 @@ public class EditableFormPage {
         $("#start-edit").click();
     }
 
-    public void setName() {
+    public EditableFormPage setName() {
         $("#in-name").val(NAME);
+        return this;
     }
 
-    public void setSurname() {
+    public EditableFormPage setSurname() {
         $("#in-surname").val(SURNAME);
+        return this;
     }
 
-    public void setNote() {
+    public EditableFormPage setNote() {
         $("#in-notes").val(NOTE);
+        return this;
     }
 
-    public void setPhone() {
+    public EditableFormPage setPhone() {
         $("#in-phone").val(PHONE);
+        return this;
     }
 
     public void uploadPhoto() {

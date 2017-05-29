@@ -36,13 +36,13 @@ public class CardPaymentSteps {
 
     @And("^I select expiration date \"([^\"]*)\", \"([^\"]*)\"$")
     public void iSelectExpirationDate(String month, String year) throws Throwable {
-        cardPaymentPage.setMonth(month);
-        cardPaymentPage.setYear(year);
+        cardPaymentPage.setMonth(month)
+                .setYear(year);
     }
 
     @And("^I click pay button$")
     public void iClickPayButton() throws Throwable {
-        cardPaymentPage.clickPayButtn();
+        cardPaymentPage.clickPayButton();
     }
 
     @Then("^Payment confirmation message \"([^\"]*)\" is displayed$")

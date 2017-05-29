@@ -1,13 +1,8 @@
 package executors;
 
-import com.codeborne.selenide.Condition;
 import org.openqa.selenium.By;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
+import static com.codeborne.selenide.Selenide.*;
 
 public class DynamicContentPage {
 
@@ -27,6 +22,6 @@ public class DynamicContentPage {
     }
 
     private void scrollPageDown() {
-        executeJavaScript("window.scrollBy(0,5)");
+        executeJavaScript("window.scrollBy(0,50)");
     }
 }

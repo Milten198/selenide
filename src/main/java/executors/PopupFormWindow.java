@@ -1,6 +1,5 @@
 package executors;
 
-
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
@@ -56,6 +55,4 @@ public class PopupFormWindow {
             this.fieldNumber = fieldNumber;
         }
     }
-
-
 }

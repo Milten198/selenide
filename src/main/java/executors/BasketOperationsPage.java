@@ -13,12 +13,14 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class BasketOperationsPage {
 
-    public void setQuantityOfProduct(String productName, String quantity) {
+    public BasketOperationsPage setQuantityOfProduct(String productName, String quantity) {
         $(By.xpath(String.format("//div[h4[contains(text(), '%s')]]/div/input", productName))).val(quantity);
+        return this;
     }
 
-    public void addProductToBasket(String productName) {
+    public BasketOperationsPage addProductToBasket(String productName) {
         $(By.xpath(String.format("//div[h4[contains(text(), '%s')]]/div/span", productName))).click();
+        return this;
     }
 
     public boolean verifyTotalQuantity() {

@@ -1,6 +1,5 @@
 package executors;
 
-
 import com.codeborne.selenide.Selenide;
 import org.openqa.selenium.By;
 
@@ -12,7 +11,8 @@ public class PopUpFormPage {
         $(By.cssSelector(".btn.btn-primary.btn-block.js-open-window")).click();
     }
 
-    public void switchToPopup() {
+    public PopupFormWindow switchToPopup() {
         Selenide.switchTo().window(1);
+        return new PopupFormWindow();
     }
 }

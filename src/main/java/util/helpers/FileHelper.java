@@ -21,10 +21,9 @@ public class FileHelper {
         }
     }
 
-    public boolean isFileDownloaded(String downloadPath, String fileName) {
+    public static boolean isFileDownloaded(String downloadPath, String fileName) {
         File dir = new File(downloadPath);
         File[] dirFiles = dir.listFiles();
-
         if (dirFiles != null) {
             for (File dirFile : dirFiles) {
                 if (dirFile.getName().equals(fileName)) {
@@ -38,7 +37,6 @@ public class FileHelper {
     private static boolean isFileNotCompleted() {
         boolean result = false;
         File folder = new File(DOWNLOAD_PATH);
-
         if (folder.exists() && folder.listFiles().length > 0) {
             for (int i = 0; i < folder.listFiles().length; i++) {
                 String fileName = folder.listFiles()[i].getName();
@@ -52,20 +50,15 @@ public class FileHelper {
     }
 
 
-    public static boolean waitForFileToBeDownloaded() throws InterruptedException {
+    public static void waitForFileToBeDownloaded() throws InterruptedException {
         int counter = 0;
-        boolean fileFound = false;
-        File folder = new File(DOWNLOAD_PATH);
-
         while (counter < Configuration.timeout) {
-            if (folder.exists() && folder.listFiles().length > 0 && !isFileNotCompleted()) {
-                fileFound = true;
+            if (!isFileNotCompleted()) {
                 break;
             } else {
                 Thread.sleep(TestConfiguration.SHORT_TIME_FOR_THREAD);
                 counter++;
             }
         }
-        return fileFound;
     }
 }

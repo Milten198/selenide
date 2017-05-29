@@ -24,10 +24,10 @@ public class EditableFormSteps {
 
     @And("^I fill all the fields$")
     public void iFillAllTheFields() throws Throwable {
-        editableFormPage.setName();
-        editableFormPage.setSurname();
-        editableFormPage.setNote();
-        editableFormPage.setPhone();
+        editableFormPage.setName()
+                .setSurname()
+                .setNote()
+                .setPhone();
     }
 
     @And("^I upload photo$")

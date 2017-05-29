@@ -30,7 +30,7 @@
         | Switch/Solo (Paymentech)   | 6331101999990016 |
 
 
-    Scenario Outline: Card expiration date expired
+    Scenario Outline: Card expiration date expires
       When I select a credit card type "<card>"
       And I type name "Jan Kowalski"
       And I type credit card number "<number>"

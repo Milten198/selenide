@@ -1,45 +1,48 @@
 package executors;
 
-
-import org.openqa.selenium.By;
-
-import static com.codeborne.selenide.Selenide.$;
+import locators.NodesLocators;
 
 public class NodesPage {
 
+    private NodesLocators locators;
+
+    public NodesPage() {
+        locators = new NodesLocators();
+    }
+
     public void clickOnRootNodeName() {
-        $(By.xpath("//a[contains(text(), 'Root')]")).click();
+        locators.rootNodeName.click();
     }
 
     public void doubleClickRootNodeName() {
-        $(By.xpath("//a[contains(text(), 'Root')]")).doubleClick();
+        locators.rootNodeName.doubleClick();
     }
 
     public void clickOnRootNodeArrow() {
-        $(".jstree-icon.jstree-ocl").click();
+        locators.rootNodeArrow.click();
     }
 
     public void clickRightOnRootNodeName() {
-        $(By.xpath("//a[contains(text(), 'Root')]")).contextClick();
+        locators.rootNodeName.contextClick();
     }
 
     public void clickOnChangeNameButton() {
-        $(".vakata-context-hover>a").click();
+        locators.changeNameButton.click();
     }
 
     public void typeNewName(String newName) {
-        $(".jstree-rename-input").val(newName).pressEnter();
+        locators.newNameInput.val(newName).pressEnter();
     }
 
     public String verifyChildNodeName(String childNumber) {
-        return $(By.xpath(String.format("//a[text() = 'Child node %s']", childNumber))).getText();
+        return locators.getChildNodeName(childNumber).getText();
     }
 
     public String verifyArticleHeader() {
-        return $(".col-md-9.content-container>h1").getText();
+        return locators.header.getText();
     }
 
     public String verifyRootNodeName() {
-        return $(By.xpath("//a[contains(text(), 'Root')]")).getText();
+        return locators.rootNodeName.getText();
     }
 }

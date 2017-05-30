@@ -13,6 +13,7 @@ Feature: Drag and drop product into the basket
     And I drag and drop a "<product>" into the basket
     Then I can see total "<quantity>" of product in basket
     And I can see total "<price>" to pay in basket
+
     Examples:
       | quantity | product  | price      |
       | 20       | Okulary  | 310.80 zł  |

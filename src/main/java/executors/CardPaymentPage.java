@@ -1,42 +1,46 @@
 package executors;
 
-import org.openqa.selenium.By;
-
-import static com.codeborne.selenide.Selenide.$;
+import locators.CardPaymentLocators;
 
 public class CardPaymentPage {
 
+    private CardPaymentLocators locators;
+
+    public CardPaymentPage() {
+        locators = new CardPaymentLocators();
+    }
+
     public void selectCardType(String cardType) {
-        $(By.cssSelector("#task8_form_cardType")).selectOption(cardType);
+        locators.cardType.selectOption(cardType);
     }
 
     public void setName(String name) {
-        $("#task8_form_name").val(name);
+        locators.name.val(name);
     }
 
     public void setCardNumber(String cardNumber) {
-        $("#task8_form_cardNumber").val(cardNumber);
+        locators.cardNumber.val(cardNumber);
     }
 
     public void cvvCode(String cvvCode) {
-        $("#task8_form_cardCvv").val(cvvCode);
+        locators.cardCVV.val(cvvCode);
     }
 
     public CardPaymentPage setMonth(String month) {
-        $("#task8_form_cardInfo_month").selectOption(month);
+        locators.monthExpirationDate.selectOption(month);
         return this;
     }
 
     public CardPaymentPage setYear(String year) {
-        $("#task8_form_cardInfo_year").selectOption(year);
+        locators.yearExpirationDate.selectOption(year);
         return this;
     }
 
     public void clickPayButton() {
-        $(".btn.btn-primary.col-md-4.pull-right").click();
+        locators.payButton.click();
     }
 
     public String verifyMessage() {
-        return $(".list-unstyled>li").getText();
+        return locators.cardExpirationMessage.getText();
     }
 }

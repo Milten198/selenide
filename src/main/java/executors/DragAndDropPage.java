@@ -1,6 +1,5 @@
 package executors;
 
-
 import com.codeborne.selenide.SelenideElement;
 import locators.DragAndDropLocators;
 import org.openqa.selenium.interactions.Actions;
@@ -9,7 +8,7 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class DragAndDropPage {
 
-    DragAndDropLocators locators;
+    private DragAndDropLocators locators;
 
     public DragAndDropPage() {
         locators = new DragAndDropLocators();
@@ -37,6 +36,4 @@ public class DragAndDropPage {
                 .build()
                 .perform();
     }
-
-
 }

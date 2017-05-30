@@ -1,11 +1,16 @@
 package executors;
 
-import org.openqa.selenium.By;
+import locators.DynamicContentLocators;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class DynamicContentPage {
 
+    private DynamicContentLocators locators;
+
+    public DynamicContentPage() {
+        locators = new DynamicContentLocators();
+    }
 
     public void scrollToTheFooter() {
         while (!isFooterVisible()) {
@@ -13,12 +18,12 @@ public class DynamicContentPage {
         }
     }
 
-    public String numberOfLoadings(){
-        return String.valueOf($$(By.className("jscroll-added")).size());
+    public String numberOfLoadings() {
+        return String.valueOf(locators.loadedFragments.size());
     }
 
     public boolean isFooterVisible() {
-        return $(By.cssSelector(".jscroll-inner>h3")).isDisplayed();
+        return locators.footer.isDisplayed();
     }
 
     private void scrollPageDown() {

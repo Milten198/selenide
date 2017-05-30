@@ -49,7 +49,7 @@ public class EditableFormSteps {
     public void iCanSeeMyDataInForm() throws Throwable {
         Assert.assertEquals("Wrong name", NAME, editableFormPage.getNameFromForm());
         Assert.assertEquals("Wrong surname", SURNAME, editableFormPage.getSurnameFromForm());
-        Assert.assertEquals("Wrong note", NOTE, editableFormPage.getNoteFrmForm());
+        Assert.assertEquals("Wrong note", NOTE, editableFormPage.getNoteFromForm());
         Assert.assertEquals("Wrong phone number", PHONE, editableFormPage.getPhoneFromForm());
         Assert.assertTrue("Wrong image", editableFormPage.getPhotoSrc().contains("data:image/jpeg;base64"));
     }

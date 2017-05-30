@@ -7,8 +7,8 @@ import executors.PopUpFormPage;
 import executors.PopupFormWindow;
 import org.junit.Assert;
 
-import static executors.PopupFormWindow.FormFields.EMAIL;
-import static executors.PopupFormWindow.FormFields.PHONE;
+import static locators.PopUpFormWindowLocators.FormFields.EMAIL;
+import static locators.PopUpFormWindowLocators.FormFields.PHONE;
 
 public class PopUpSteps {
 

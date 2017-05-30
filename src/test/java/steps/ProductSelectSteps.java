@@ -36,6 +36,6 @@ public class ProductSelectSteps {
 
     @Then("^I can see category \"([^\"]*)\" matched for this fragment$")
     public void iCanSeeCategoryMatchedForThisFragment(String category) throws Throwable {
-        Assert.assertEquals("Wrong category found", category, selectPage.getSelectedCategory());
+        Assert.assertEquals("Wrong category found", category, selectPage.getSearchedCategory());
     }
 }

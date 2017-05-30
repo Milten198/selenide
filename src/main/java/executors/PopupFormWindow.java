@@ -2,57 +2,49 @@ package executors;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
+import locators.PopUpFormWindowLocators;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.getElement;
+import static locators.PopUpFormWindowLocators.FormFields;
 
 public class PopupFormWindow {
 
+    private PopUpFormWindowLocators locators;
+
+    public PopupFormWindow() {
+        locators = new PopUpFormWindowLocators();
+    }
+
     public void switchToFrame() {
-        Selenide.switchTo().frame(getElement(By.xpath("//iframe")));
+        Selenide.switchTo().frame(locators.frame);
     }
 
     public boolean isAlertDisplayedAndFocused() {
-        return $(By.id("save-btn")).is(Condition.visible);
+        return locators.saveButton.is(Condition.visible);
     }
 
     public void setName(String name) {
-        $(By.xpath("//input[@name='name']")).val(name);
+        locators.name.val(name);
     }
 
     public void setEmail(String email) {
-        $(By.xpath("//input[@name='email']")).val(email);
+        locators.email.val(email);
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        $(By.xpath("//input[@name='phone']")).val(phoneNumber);
+        locators.phone.val(phoneNumber);
     }
 
     public void clickSaveBtn() {
-        $(By.id("save-btn")).click();
+        locators.saveButton.click();
     }
 
     public String getConfirmationMessage() {
-        return $(By.cssSelector(".container>h1")).getText();
+        return locators.confirmationMessage.getText();
     }
 
     public String getErrorMessage(FormFields field) {
-        return $(formFieldLocator(field)).getText();
+        return $(locators.formFieldLocator(field)).getText();
     }
 
-    private By formFieldLocator(FormFields field) {
-        return By.xpath(String.format("(//span[@class='error'])[%s]", field.fieldNumber));
-    }
-
-    public enum FormFields {
-        EMAIL("1"),
-        PHONE("2");
-
-        String fieldNumber;
-
-        FormFields(String fieldNumber) {
-            this.fieldNumber = fieldNumber;
-        }
-    }
 }

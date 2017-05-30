@@ -1,14 +1,18 @@
 package executors;
 
 import com.codeborne.selenide.Selenide;
-import org.openqa.selenium.By;
-
-import static com.codeborne.selenide.Selenide.$;
+import locators.PopUpFormLocators;
 
 public class PopUpFormPage {
 
+    private PopUpFormLocators locators;
+
+    public PopUpFormPage() {
+        locators = new PopUpFormLocators();
+    }
+
     public void clickApplyBtn() {
-        $(By.cssSelector(".btn.btn-primary.btn-block.js-open-window")).click();
+        locators.applyButton.click();
     }
 
     public PopupFormWindow switchToPopup() {

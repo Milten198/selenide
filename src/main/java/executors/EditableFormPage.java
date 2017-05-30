@@ -1,12 +1,17 @@
 package executors;
 
 import com.codeborne.selenide.Condition;
+import locators.EditableFormLocators;
 
 import java.io.File;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class EditableFormPage {
+
+    private EditableFormLocators locators;
+
+    public EditableFormPage() {
+        locators = new EditableFormLocators();
+    }
 
     public static final String NAME = "Max";
     public static final String SURNAME = "Kolonko";
@@ -14,61 +19,61 @@ public class EditableFormPage {
     public static final String PHONE = "800100300";
 
     public void enableEditionMode() {
-        $(".dropdown-toggle.menu-border").hover();
-        $("#menu1>li>a").hover();
-        $("#start-edit").click();
+        locators.menuDropDown.hover();
+        locators.subMenuForm.hover();
+        locators.subMenuEditStart.click();
     }
 
     public EditableFormPage setName() {
-        $("#in-name").val(NAME);
+        locators.name.val(NAME);
         return this;
     }
 
     public EditableFormPage setSurname() {
-        $("#in-surname").val(SURNAME);
+        locators.surname.val(SURNAME);
         return this;
     }
 
     public EditableFormPage setNote() {
-        $("#in-notes").val(NOTE);
+        locators.notes.val(NOTE);
         return this;
     }
 
     public EditableFormPage setPhone() {
-        $("#in-phone").val(PHONE);
+        locators.phone.val(PHONE);
         return this;
     }
 
     public void uploadPhoto() {
-        $("#in-file").uploadFile(new File(System.getProperty("user.dir") + "\\src\\test\\resources\\Task3\\bob.jpg"));
+        locators.fileUpload.uploadFile(new File(System.getProperty("user.dir") + "\\src\\test\\resources\\Task3\\bob.jpg"));
     }
 
     public void clickSaveButton() {
-        $("#save-btn").click();
+        locators.saveButton.click();
     }
 
     public String getConfirmationMessage() {
-        return $(".notifyjs-bootstrap-base.notifyjs-bootstrap-success>span").shouldBe(Condition.visible).getText();
+        return locators.message.shouldBe(Condition.visible).getText();
     }
 
     public String getNameFromForm() {
-        return $("#in-name").getValue();
+        return locators.name.getValue();
     }
 
     public String getSurnameFromForm() {
-        return $("#in-surname").getValue();
+        return locators.surname.getValue();
     }
 
-    public String getNoteFrmForm() {
-        return $("#in-notes").getValue();
+    public String getNoteFromForm() {
+        return locators.notes.getValue();
     }
 
     public String getPhoneFromForm() {
-        return $("#in-phone").getValue();
+        return locators.phone.getValue();
     }
 
     public String getPhotoSrc() {
-        return $(".preview-photo").getAttribute("src");
+        return locators.photo.getAttribute("src");
     }
 
     public boolean isFormEditable() {

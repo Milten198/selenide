@@ -1,18 +1,20 @@
 package executors;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
+import locators.ProductSelectLocators;
 
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.getElements;
-
 public class ProductSelectPage {
 
+    private ProductSelectLocators locators;
+
+    public ProductSelectPage() {
+        locators = new ProductSelectLocators();
+    }
+
     public void expandDropDownlist() {
-        $(".select2-selection__arrow").click();
+        locators.categoryDropDown.click();
     }
 
     public void pickCategory(String category) {
@@ -21,7 +23,7 @@ public class ProductSelectPage {
 
     public boolean areProductsFromSelectedCategory(String category) {
         boolean isProperCategory = true;
-        List<SelenideElement> products = getElements(By.cssSelector(".caption>p>strong"));
+        List<SelenideElement> products = locators.productsCategories;
         for (SelenideElement product : products) {
             if (!product.getText().equals(category)) {
                 isProperCategory = false;
@@ -31,16 +33,16 @@ public class ProductSelectPage {
     }
 
     public void typeFragmentInSearchBox(String fragment) {
-        $(".select2-search__field").val(fragment);
+        locators.searchInput.val(fragment);
     }
 
-    public String getSelectedCategory() {
-        List<SelenideElement> categories = getElements(By.xpath("//span[2]/ul/li"));
+    public String getSearchedCategory() {
+        List<SelenideElement> categories = locators.listOfCategories;
         return categories.get(0).getText();
     }
 
     private SelenideElement selectCategory(String category) {
-        List<SelenideElement> categories = $$(".select2-results__option");
+        List<SelenideElement> categories = locators.listOfCategories;
         for (SelenideElement element : categories) {
             if (element.getText().equals(category)) {
                 return element;

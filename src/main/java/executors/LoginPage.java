@@ -1,29 +1,35 @@
 package executors;
 
-import org.openqa.selenium.By;
+import locators.LoginPageLocators;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Condition.*;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 
 public class LoginPage {
 
+    private LoginPageLocators locators;
+
+    public LoginPage() {
+        locators = new LoginPageLocators();
+    }
+
     public void verifyLoginPageIsVisible() {
-        $(By.id("LoginForm_save")).shouldBe(visible).shouldHave(text("Login"));
+        locators.loginButton.shouldBe(visible).shouldHave(text("Login"));
     }
 
     public void setLogin(String login) {
-        $(By.id("LoginForm__username")).val(login);
+        locators.loginInput.val(login);
     }
 
     public void setPassword(String password) {
-        $(By.id("LoginForm__password")).val(password);
+        locators.passwordInput.val(password);
     }
 
     public void clickLoginBtn() {
-        $(By.id("LoginForm_save")).click();
+        locators.loginButton.click();
     }
 
     public void verifyLoginErrorMessage(String message) {
-        $(By.cssSelector(".list-unstyled>li")).shouldBe(visible).shouldHave(text(message));
+        locators.errorMessage.shouldBe(visible).shouldHave(text(message));
     }
 }

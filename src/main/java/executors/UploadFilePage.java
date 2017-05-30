@@ -3,6 +3,8 @@ package executors;
 import Objects.Person;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
+import locators.UploadFileLocators;
 import org.openqa.selenium.By;
 
 import java.io.File;
@@ -16,13 +18,19 @@ import static com.codeborne.selenide.Selenide.getElements;
 
 public class UploadFilePage {
 
+    private UploadFileLocators locators;
+
+    public UploadFilePage() {
+        locators = new UploadFileLocators();
+    }
+
     public void uploadFile(String fileName) {
         File file = new File(System.getProperty("user.dir") + "\\src\\test\\resources\\Task5\\" + fileName);
-        $(By.xpath("//input")).uploadFile(file);
+        locators.uploadButton.uploadFile(file);
     }
 
     public boolean compareTwoLists() throws Exception {
-        $(By.xpath("//tbody")).shouldBe(Condition.visible);
+        locators.tableBody.shouldBe(Condition.visible);
         List<Person> table = createListOfPeopleFromTable();
         List<Person> file = createListOfPeopleFromFile();
 
@@ -57,9 +65,9 @@ public class UploadFilePage {
 
     private List<Person> createListOfPeopleFromTable() {
         List<Person> peopleInTable = new ArrayList<Person>();
-        ElementsCollection rows = getElements(By.xpath("//tbody/tr"));
+        List<SelenideElement> rows = locators.rowsNumber;
         for (int i = 1; i <= rows.size(); i++) {
-            ElementsCollection record = getElements(By.xpath(String.format("//tr[%s]/td", i)));
+            List<SelenideElement> record = locators.getRecordsFromRow(i);
             peopleInTable.add(new Person(record.get(0).getText(), record.get(1).getText(), record.get(2).getText()));
         }
         return peopleInTable;

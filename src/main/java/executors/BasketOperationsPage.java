@@ -1,6 +1,7 @@
 package executors;
 
 import com.codeborne.selenide.SelenideElement;
+import locators.BasketOperationsLocators;
 import org.openqa.selenium.By;
 
 import java.math.BigDecimal;
@@ -13,51 +14,55 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class BasketOperationsPage {
 
+    private BasketOperationsLocators locators;
+
+    public BasketOperationsPage() {
+        locators = new BasketOperationsLocators();
+    }
+
     public BasketOperationsPage setQuantityOfProduct(String productName, String quantity) {
-        $(By.xpath(String.format("//div[h4[contains(text(), '%s')]]/div/input", productName))).val(quantity);
+        locators.productInput(productName).val(quantity);
         return this;
     }
 
-    public BasketOperationsPage addProductToBasket(String productName) {
-        $(By.xpath(String.format("//div[h4[contains(text(), '%s')]]/div/span", productName))).click();
-        return this;
+    public void addProductToBasket(String productName) {
+       locators.addProduct(productName).click();
     }
 
     public boolean verifyTotalQuantity() {
-        return getTotalQuantity().equals($(".summary-quantity").getText());
+        return getTotalQuantity().equals(locators.totalQuantity.getText());
     }
 
     public boolean verifyTotalPrice() {
-        return getTotalPrice().equals($(".summary-price").getText());
+        return getTotalPrice().equals(locators.totalPrice.getText());
     }
 
-    public String numberOfProductsInBasket() {
-        return String.valueOf($$(".col-md-9.text-on-button-level").size());
+    public boolean verifyNumberOfProductsInBasket(String numberOfProducts) {
+        return String.valueOf(locators.listOfProductInBasket.size()).equals(numberOfProducts);
     }
 
     public void removeProductFromBasket(String productName) {
-        $(By.xpath(String.format("//button[@data-product-name = '%s'][contains(text(), 'Usuń')]", productName))).click();
+        locators.removeProductFromBasket(productName).click();
     }
 
     public boolean isProductNotInBasket(String productName) {
-        return !$(By.xpath(String.format("//div[contains(text(), '%s')]", productName))).is(visible);
+        return !locators.productInBasket(productName).is(visible);
     }
 
     private String getTotalQuantity() {
-        List<SelenideElement> products = $$(".row-in-basket-quantity");
         int totalQuantity = 0;
-        for (SelenideElement product : products) {
+        for (SelenideElement product : locators.listOfQuantitiesInBasket) {
             totalQuantity += Integer.parseInt(product.getText());
         }
         return String.valueOf(totalQuantity);
     }
 
     private String getTotalPrice() {
-        List<SelenideElement> products = $$(".col-md-9.text-on-button-level");
+        List<SelenideElement> products = locators.listOfProductInBasket;
         float totalPrice = 0;
         for (int i = 0; i < products.size(); i++) {
             String productPrice = products.get(i).getText().substring(products.get(i).getText().indexOf('(') + 1, products.get(i).getText().indexOf(')'));
-            totalPrice += Float.parseFloat(productPrice) * Float.parseFloat($$(".row-in-basket-quantity").get(i).getText());
+            totalPrice += Float.parseFloat(productPrice) * Float.parseFloat(locators.listOfQuantitiesInBasket.get(i).getText());
         }
         return round(totalPrice, 2) + " zł";
     }

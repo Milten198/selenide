@@ -9,7 +9,7 @@ import org.junit.Assert;
 
 public class BasketOperationsSteps {
 
-    public BasketOperationsPage operationsPage;
+    private BasketOperationsPage operationsPage;
 
     public BasketOperationsSteps() {
         operationsPage = new BasketOperationsPage();
@@ -33,7 +33,7 @@ public class BasketOperationsSteps {
 
     @And("^Basket has \"([^\"]*)\" products$")
     public void basketHasProducts(String numberOfProducts) throws Throwable {
-        Assert.assertEquals("Wrong number of products", numberOfProducts, operationsPage.numberOfProductsInBasket());
+        Assert.assertTrue("Wrong number of products", operationsPage.verifyNumberOfProductsInBasket(numberOfProducts));
     }
 
     @Then("^I remove product \"([^\"]*)\"$")

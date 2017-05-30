@@ -2,15 +2,12 @@ package executors;
 
 import com.codeborne.selenide.SelenideElement;
 import locators.BasketOperationsLocators;
-import org.openqa.selenium.By;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 
 public class BasketOperationsPage {
 
@@ -26,7 +23,7 @@ public class BasketOperationsPage {
     }
 
     public void addProductToBasket(String productName) {
-       locators.addProduct(productName).click();
+        locators.addProduct(productName).click();
     }
 
     public boolean verifyTotalQuantity() {
@@ -38,7 +35,8 @@ public class BasketOperationsPage {
     }
 
     public boolean verifyNumberOfProductsInBasket(String numberOfProducts) {
-        return String.valueOf(locators.listOfProductInBasket.size()).equals(numberOfProducts);
+        BasketOperationsLocators newLocator = new BasketOperationsLocators();
+        return String.valueOf(newLocator.listOfProductInBasket.size()).equals(numberOfProducts);
     }
 
     public void removeProductFromBasket(String productName) {

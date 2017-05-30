@@ -24,7 +24,7 @@ public class BasketOperationsLocators {
     }
 
     public SelenideElement removeProductFromBasket(String productName) {
-        return $(By.xpath(String.format("//button[@data-product-name = '%s'][contains(text(), 'Usuń')]", productName)));
+        return $(By.xpath(String.format("//button[@data-product-name = '%s'][contains(text(), 'Usu')]", productName)));
     }
 
     public SelenideElement productInBasket(String productName) {

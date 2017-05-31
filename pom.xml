@@ -8,6 +8,11 @@
     <artifactId>selenide</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <profiles>
         <profile>
             <id>RunFeature</id>
@@ -63,6 +68,5 @@
             <version>1.16.8</version>
         </dependency>
     </dependencies>
-
 
 </project>

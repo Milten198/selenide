@@ -1,7 +1,6 @@
 package steps;
 
 import com.codeborne.selenide.Selenide;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import executors.HomePage;

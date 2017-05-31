@@ -18,7 +18,6 @@ public class LoginAndDownloadSteps {
         loginPage = new LoginPage();
     }
 
-
     @When("^I fill the Login field with \"([^\"]*)\"$")
     public void iFillTheLoginFieldWith(String login) throws Throwable {
         loginPage.setLogin(login);
